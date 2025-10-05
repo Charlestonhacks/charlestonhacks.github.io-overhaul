@@ -13,6 +13,14 @@
   padding: 1rem 2rem;
   background: #1a1a1a;
   border-bottom: 1px solid #333;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    gap: 1rem;
+    padding: 1rem;
+  }
 }
 
 .nav-brand a {
@@ -33,6 +41,20 @@
   display: flex;
   gap: 1.5rem;
   flex: 1;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.8rem;
+  }
 }
 
 .nav-links a {
@@ -57,6 +79,19 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .nav-auth {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .user-email {
+    font-size: 0.75rem;
+  }
 }
 
 .user-email {
@@ -103,6 +138,13 @@
   margin: 0 auto;
   padding: 3rem 2rem;
   text-align: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    padding: 2rem 1rem;
+  }
 }
 
 .home-page h1 {
@@ -114,10 +156,23 @@
   background-clip: text;
 }
 
+@media (max-width: 768px) {
+  .home-page h1 {
+    font-size: 2rem;
+  }
+}
+
 .home-page p {
   font-size: 1.25rem;
   color: #aaa;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .home-page p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .feature-grid {
@@ -125,6 +180,14 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
 }
 
 .feature-card {
