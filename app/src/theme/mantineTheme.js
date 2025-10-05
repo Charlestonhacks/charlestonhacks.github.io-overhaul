@@ -10,35 +10,87 @@ export const mantineTheme = {
   colorScheme: 'dark',
 
   /** Primary color used for buttons, links, etc. */
-  primaryColor: 'cyan',
+  primaryColor: 'gold',
 
   /** Custom color palette */
   colors: {
-    // Dark mode colors
+    // Dark mode colors - warmer tones to match gold theme
     dark: [
-      '#C1C2C5',
-      '#A6A7AB',
-      '#909296',
-      '#5c5f66',
-      '#373A40',
-      '#2C2E33',
-      '#25262b',
-      '#1A1B1E',
-      '#141517',
-      '#101113',
+      '#C9C5BD',
+      '#B0ACA3',
+      '#979389',
+      '#6B6660',
+      '#4A4540',
+      '#3A3530',
+      '#2D2925',
+      '#221F1B',
+      '#1A1714',
+      '#12100E',
     ],
-    // Custom brand colors (optional)
-    brand: [
-      '#E3FAFC',
-      '#C5F6FA',
-      '#99E9F2',
-      '#66D9E8',
-      '#3BC9DB',
-      '#22B8CF',
-      '#15AABF',
-      '#1098AD',
-      '#0C8599',
-      '#0B7285',
+    // Primary gold/bronze palette (based on #e6c388)
+    gold: [
+      '#FFF8E7',  // Lightest - backgrounds
+      '#FFEEC4',  // Very light
+      '#F5DCA4',  // Light
+      '#E6C388',  // Base color
+      '#D9AD6D',  // Medium
+      '#CC9752',  // Darker
+      '#B8823A',  // Dark
+      '#9A6D2E',  // Very dark
+      '#7D5824',  // Deeper
+      '#5F421A',  // Darkest
+    ],
+    // Complementary teal/cyan for contrast
+    teal: [
+      '#E6F7F7',
+      '#B8E9E9',
+      '#8ADADA',
+      '#5CCBCB',
+      '#3BBDBD',
+      '#2AA9A9',
+      '#1F8F8F',
+      '#177575',
+      '#0F5B5B',
+      '#0A4242',
+    ],
+    // Earthy green for success states
+    sage: [
+      '#F0F4EC',
+      '#D9E5CC',
+      '#C2D6AC',
+      '#ABC78C',
+      '#94B86C',
+      '#7DA94C',
+      '#669A3D',
+      '#4F7B2E',
+      '#385C1F',
+      '#213D10',
+    ],
+    // Deep blue for info/links
+    ocean: [
+      '#E8F1F8',
+      '#C4DBF0',
+      '#9FC5E8',
+      '#7AAFE0',
+      '#5599D8',
+      '#3583D0',
+      '#286DB0',
+      '#1B5790',
+      '#0E4170',
+      '#072B50',
+    ],
+    // Warm red for errors/warnings
+    terracotta: [
+      '#FCF0ED',
+      '#F5D4CB',
+      '#EDB8A9',
+      '#E69C87',
+      '#DE8065',
+      '#D66443',
+      '#B85236',
+      '#9A4029',
+      '#7C2E1C',
+      '#5E1C0F',
     ],
   },
 
@@ -121,12 +173,25 @@ export const mantineTheme = {
  * Used for color-coding user availability status
  */
 export const availabilityColors = {
-  'Full-time': 'green',
-  'Part-time': 'blue',
-  'Weekends': 'orange',
-  'Evenings': 'purple',
+  'Full-time': 'sage',
+  'Part-time': 'ocean',
+  'Weekends': 'gold',
+  'Evenings': 'teal',
   'Flexible': 'teal',
   'Unavailable': 'gray',
+};
+
+/**
+ * Color palette reference for components
+ * Use these semantic color names throughout the app
+ */
+export const themeColors = {
+  primary: 'gold',       // Primary actions, branding
+  success: 'sage',       // Success states, confirmations
+  info: 'ocean',         // Information, links
+  warning: 'gold',       // Warnings, cautions
+  error: 'terracotta',   // Errors, destructive actions
+  accent: 'teal',        // Highlights, secondary actions
 };
 
 /**
