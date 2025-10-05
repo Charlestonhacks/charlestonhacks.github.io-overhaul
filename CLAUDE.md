@@ -15,13 +15,23 @@ CharlestonHacks is undergoing a **Strangler Fig Migration** from vanilla JavaScr
 
 **NEW: React App (`/app` directory)**
 - Vite + React 19 + React Router
-- Mantine UI component library with custom theme
+- **Mantine UI component library with custom theme** - ALWAYS prefer Mantine components over custom HTML/CSS when building UI
 - React Query for server state management
 - Zustand for client state (auth)
 - OAuth authentication (LinkedIn, Facebook, Google)
 - Modern component-based architecture
 - Wraps legacy pages in iframes during migration
 - Build output: `/dist/app` (deployed to `/app/` route)
+
+### UI Component Guidelines
+
+**ALWAYS use Mantine components when building React UI**:
+- Use `<Button>`, `<TextInput>`, `<Select>`, `<Modal>`, etc. from `@mantine/core`
+- Use `<Dropzone>` from `@mantine/dropzone` for file uploads
+- Use `notifications` from `@mantine/notifications` for toast messages
+- Mantine provides consistent styling, accessibility, and mobile responsiveness
+- Only create custom components when Mantine doesn't provide the needed functionality
+- Reference: https://mantine.dev/core/button/, https://mantine.dev/form/use-form/
 
 **LEGACY: Vanilla JS (`/assets`, root HTML files)**
 - ES6 modules, no build step

@@ -239,3 +239,296 @@
   width: 100%;
   min-height: calc(100vh - 60px);
 }
+
+/* Navigation Dropdown Styles */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  color: #aaa;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.nav-dropdown-trigger:hover,
+.nav-dropdown-trigger.active {
+  color: #fff;
+  background: #2a2a2a;
+}
+
+.nav-dropdown-trigger.active {
+  color: #0bb;
+  background: #1a3a3a;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: dropdownFade 0.2s ease-in-out;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #aaa;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-dropdown-item:hover {
+  color: #fff;
+  background: #2a2a2a;
+}
+
+.nav-dropdown-item:first-child {
+  border-radius: 6px 6px 0 0;
+}
+
+.nav-dropdown-item:last-child {
+  border-radius: 0 0 6px 6px;
+}
+
+@media (max-width: 768px) {
+  .nav-dropdown-menu {
+    position: static;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+}
+
+/* Content Page Styles */
+.content-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  width: 100%;
+}
+
+.content-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.content-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #0bb 0%, #099 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.content-header .subtitle {
+  font-size: 1.25rem;
+  color: #aaa;
+}
+
+.content-body {
+  color: #eee;
+}
+
+.content-body h2 {
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+  color: #0bb;
+}
+
+.content-body h3 {
+  font-size: 1.5rem;
+  margin: 1.5rem 0 0.75rem;
+  color: #fff;
+}
+
+.lead {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* Mission Page Styles */
+.mission-section {
+  margin-bottom: 4rem;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.mission-card {
+  padding: 2rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+
+.mission-card:hover {
+  transform: translateY(-4px);
+  border-color: #0bb;
+  box-shadow: 0 8px 24px rgba(0, 187, 187, 0.2);
+}
+
+.mission-card h3 {
+  margin-top: 0;
+}
+
+.mission-card p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.values-section {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.values-list {
+  list-style: none;
+  padding: 0;
+}
+
+.values-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid #333;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.values-list li:last-child {
+  border-bottom: none;
+}
+
+.values-list strong {
+  color: #0bb;
+}
+
+/* Board Members Page Styles */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.board-card {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.board-card:hover {
+  transform: translateY(-4px);
+  border-color: #0bb;
+  box-shadow: 0 8px 24px rgba(0, 187, 187, 0.2);
+}
+
+.board-image {
+  width: 100%;
+  height: 200px;
+  background: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.board-info {
+  padding: 1.5rem;
+}
+
+.board-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #fff;
+}
+
+.board-role {
+  color: #0bb;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.board-bio {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.join-board {
+  text-align: center;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+}
+
+.join-board h2 {
+  margin-top: 0;
+}
+
+.join-board p {
+  color: #aaa;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .content-page {
+    padding: 2rem 1rem;
+  }
+
+  .content-header h1 {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+  }
+
+  .mission-grid,
+  .board-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

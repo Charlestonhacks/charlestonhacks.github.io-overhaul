@@ -7,6 +7,8 @@ import { AuthCallback } from './AuthCallback';
 import { ProfileForm } from './ProfileForm';
 import { ProfileView } from './ProfileView';
 import { DirectorySearch } from './DirectorySearch';
+import { AboutMission } from './AboutMission';
+import { BoardMembers } from './BoardMembers';
 
 export function AppContent() {
   const { initialize, loading } = useAuthStore();
@@ -34,6 +36,10 @@ export function AppContent() {
 
           {/* Directory route */}
           <Route path="/directory" element={<DirectorySearch />} />
+
+          {/* About routes */}
+          <Route path="/about/mission" element={<AboutMission />} />
+          <Route path="/about/board" element={<BoardMembers />} />
 
           {/* Legacy pages - redirect to root HTML files */}
           <Route
