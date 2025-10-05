@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Group, Button, Menu, Text, Image } from '@mantine/core';
-import { IconChevronDown } from '@tabler/icons-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Group, Button, Tabs, Text, Image } from '@mantine/core';
 import { useAuthStore } from '../store/authStore';
 import { AuthModal } from './AuthModal';
 
@@ -9,100 +8,46 @@ export function Navigation() {
   const { user, signOut } = useAuthStore();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const aboutItems = [
-    { path: '/about/mission', label: 'Mission' },
-    { path: '/about/board', label: 'Board Members' },
-  ];
+  // Determine active tab based on pathname
+  const getActiveTab = () => {
+    if (location.pathname === '/') return 'home';
+    if (location.pathname.startsWith('/about')) return 'about';
+    if (location.pathname === '/directory') return 'directory';
+    if (location.pathname.startsWith('/profile')) return 'profile';
+    if (location.pathname === '/innovation-engine') return 'innovation-engine';
+    if (location.pathname === '/neural') return 'neural';
+    return null;
+  };
 
-  const isAboutActive = location.pathname.startsWith('/about');
+  return {
+    primaryNav: (
+      <Group h="100%" px="md" justify="space-between">
+        <Group>
+          <Link to="/">
+            <Image
+              src="/images/charlestonhackslogo.svg"
+              alt="CharlestonHacks"
+              h={40}
+              w="auto"
+            />
+          </Link>
 
-  return (
-    <>
-      <Group h="100%" px="md">
-        <Link to="/">
-          <Image
-            src="/images/charlestonhackslogo.svg"
-            alt="CharlestonHacks"
-            h={40}
-            w="auto"
-          />
-        </Link>
-
-        <Group gap="xs" ml="xl" style={{ flex: 1 }}>
-          <Button
-            component={Link}
-            to="/"
-            variant={location.pathname === '/' ? 'light' : 'subtle'}
-            color="gold"
-          >
-            Home
-          </Button>
-
-          <Menu
-            trigger="hover"
-            openDelay={100}
-            closeDelay={500}
-            position="bottom-start"
-            withinPortal
-          >
-            <Menu.Target>
-              <Button
-                variant={isAboutActive ? 'light' : 'subtle'}
-                color="gold"
-                rightSection={<IconChevronDown size={16} />}
-              >
-                About
-              </Button>
-            </Menu.Target>
-            <Menu.Dropdown>
-              {aboutItems.map((item) => (
-                <Menu.Item
-                  key={item.path}
-                  component={Link}
-                  to={item.path}
-                >
-                  {item.label}
-                </Menu.Item>
-              ))}
-            </Menu.Dropdown>
-          </Menu>
-
-          <Button
-            component={Link}
-            to="/directory"
-            variant={location.pathname === '/directory' ? 'light' : 'subtle'}
-            color="gold"
-          >
-            Directory
-          </Button>
-
-          <Button
-            component={Link}
-            to="/profile"
-            variant={location.pathname.startsWith('/profile') ? 'light' : 'subtle'}
-            color="gold"
-          >
-            Profile
-          </Button>
-
-          <Button
-            component={Link}
-            to="/innovation-engine"
-            variant={location.pathname === '/innovation-engine' ? 'light' : 'subtle'}
-            color="gold"
-          >
-            Innovation Engine
-          </Button>
-
-          <Button
-            component={Link}
-            to="/neural"
-            variant={location.pathname === '/neural' ? 'light' : 'subtle'}
-            color="gold"
-          >
-            Neural
-          </Button>
+          <Tabs value={getActiveTab()} onChange={(value) => {
+            if (value === 'home') navigate('/');
+            else if (value === 'about') navigate('/about/mission');
+            else if (value) navigate(`/${value}`);
+          }} ml="xl">
+            <Tabs.List>
+              <Tabs.Tab value="home">Home</Tabs.Tab>
+              <Tabs.Tab value="about">About</Tabs.Tab>
+              <Tabs.Tab value="directory">Directory</Tabs.Tab>
+              <Tabs.Tab value="profile">Profile</Tabs.Tab>
+              <Tabs.Tab value="innovation-engine">Innovation Engine</Tabs.Tab>
+              <Tabs.Tab value="neural">Neural</Tabs.Tab>
+            </Tabs.List>
+          </Tabs>
         </Group>
 
         <Group gap="sm">
@@ -119,9 +64,19 @@ export function Navigation() {
             </Button>
           )}
         </Group>
-      </Group>
 
-      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
-    </>
-  );
+        <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+      </Group>
+    ),
+    secondaryNav: location.pathname.startsWith('/about') ? (
+      <Group h="100%" px="md" bg="dark.7">
+        <Tabs value={location.pathname} onChange={(value) => navigate(value)}>
+          <Tabs.List>
+            <Tabs.Tab value="/about/mission">Mission</Tabs.Tab>
+            <Tabs.Tab value="/about/board">Board Members</Tabs.Tab>
+          </Tabs.List>
+        </Tabs>
+      </Group>
+    ) : null,
+  };
 }

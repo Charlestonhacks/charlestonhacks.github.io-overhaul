@@ -34,11 +34,24 @@ export function AppContent() {
     );
   }
 
+  const nav = Navigation();
+
   return (
-    <AppShell header={{ height: 60 }} footer={{ height: 60 }} padding="md">
+    <AppShell
+      header={{ height: 60 }}
+      navbar={nav.secondaryNav ? { width: '100%', height: 48, breakpoint: 0 } : undefined}
+      footer={{ height: 60 }}
+      padding="md"
+    >
       <AppShell.Header>
-        <Navigation />
+        {nav.primaryNav}
       </AppShell.Header>
+
+      {nav.secondaryNav && (
+        <AppShell.Navbar>
+          {nav.secondaryNav}
+        </AppShell.Navbar>
+      )}
 
       <AppShell.Main>
         <Routes>
