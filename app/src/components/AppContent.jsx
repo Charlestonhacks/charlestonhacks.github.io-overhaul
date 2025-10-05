@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AppShell, Loader, Center } from '@mantine/core';
 import { useAuthStore } from '../store/authStore';
 import { trackPageView } from '../lib/analytics';
-import { Navigation } from './Navigation';
+import { Navigation, SecondaryNav } from './Navigation';
 import { Footer } from './Footer';
 import { HomePage } from './HomePage';
 import { AuthCallback } from './AuthCallback';
@@ -34,24 +34,20 @@ export function AppContent() {
     );
   }
 
-  const nav = Navigation();
-
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={nav.secondaryNav ? { width: '100%', height: 48, breakpoint: 0 } : undefined}
+      navbar={{ width: '100%', height: 48, breakpoint: 0 }}
       footer={{ height: 60 }}
       padding="md"
     >
       <AppShell.Header>
-        {nav.primaryNav}
+        <Navigation />
       </AppShell.Header>
 
-      {nav.secondaryNav && (
-        <AppShell.Navbar>
-          {nav.secondaryNav}
-        </AppShell.Navbar>
-      )}
+      <AppShell.Navbar>
+        <SecondaryNav />
+      </AppShell.Navbar>
 
       <AppShell.Main>
         <Routes>
