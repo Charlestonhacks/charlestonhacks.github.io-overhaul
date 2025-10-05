@@ -39,6 +39,13 @@ jobs:
       - name: Build React app
         run: cd app && npm run build
 
+      - name: Copy static assets to build output
+        run: |
+          cp -r images dist/app/
+          cp -r assets dist/app/
+          cp -r icons dist/app/
+          cp CNAME dist/app/
+
       - name: Add .nojekyll file
         run: touch dist/app/.nojekyll
 
