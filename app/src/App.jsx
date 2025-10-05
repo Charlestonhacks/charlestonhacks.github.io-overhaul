@@ -24,7 +24,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <MantineProvider theme={mantineTheme} defaultColorScheme="dark">
         <Notifications position="top-right" />
-        <BrowserRouter basename="/app">
+        <BrowserRouter>
           <AppContent />
         </BrowserRouter>
       </MantineProvider>
