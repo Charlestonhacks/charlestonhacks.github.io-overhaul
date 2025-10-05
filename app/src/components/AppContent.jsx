@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AppShell, Loader, Center } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { useAuthStore } from '../store/authStore';
 import { trackPageView } from '../lib/analytics';
-import { Navigation, SecondaryNav } from './Navigation';
+import { Navigation } from './Navigation';
+import { MobileNav } from './MobileNav';
 import { Footer } from './Footer';
 import { HomePage } from './HomePage';
 import { AuthCallback } from './AuthCallback';
@@ -16,6 +18,7 @@ import { BoardMembers } from './BoardMembers';
 export function AppContent() {
   const { initialize, loading } = useAuthStore();
   const location = useLocation();
+  const [mobileNavOpened, { toggle: toggleMobileNav, close: closeMobileNav }] = useDisclosure();
 
   useEffect(() => {
     initialize();
@@ -26,6 +29,11 @@ export function AppContent() {
     trackPageView(location.pathname + location.search);
   }, [location]);
 
+  // Close mobile nav on route change
+  useEffect(() => {
+    closeMobileNav();
+  }, [location.pathname, closeMobileNav]);
+
   if (loading) {
     return (
       <Center h="100vh">
@@ -34,18 +42,24 @@ export function AppContent() {
     );
   }
 
-  const showSecondaryNav = location.pathname.startsWith('/about');
-
   return (
     <AppShell
-      header={{ height: showSecondaryNav ? 108 : 60 }}
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: 'sm',
+        collapsed: { mobile: !mobileNavOpened },
+      }}
       footer={{ height: 60 }}
       padding="md"
     >
       <AppShell.Header>
-        <Navigation />
-        {showSecondaryNav && <SecondaryNav />}
+        <Navigation mobileNavOpened={mobileNavOpened} toggleMobileNav={toggleMobileNav} />
       </AppShell.Header>
+
+      <AppShell.Navbar>
+        <MobileNav />
+      </AppShell.Navbar>
 
       <AppShell.Main>
         <Routes>
