@@ -38,20 +38,14 @@ export function AppContent() {
 
   return (
     <AppShell
-      header={{ height: 60 }}
-      navbar={showSecondaryNav ? { width: '100%', height: 48, breakpoint: 0 } : undefined}
+      header={{ height: showSecondaryNav ? 108 : 60 }}
       footer={{ height: 60 }}
       padding="md"
     >
       <AppShell.Header>
         <Navigation />
+        {showSecondaryNav && <SecondaryNav />}
       </AppShell.Header>
-
-      {showSecondaryNav && (
-        <AppShell.Navbar>
-          <SecondaryNav />
-        </AppShell.Navbar>
-      )}
 
       <AppShell.Main>
         <Routes>
