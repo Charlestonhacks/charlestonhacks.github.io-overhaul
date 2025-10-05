@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AppShell, Loader, Center } from '@mantine/core';
 import { useAuthStore } from '../store/authStore';
 import { trackPageView } from '../lib/analytics';
 import { Navigation } from './Navigation';
@@ -25,13 +26,20 @@ export function AppContent() {
   }, [location]);
 
   if (loading) {
-    return <div className="loading">Loading...</div>;
+    return (
+      <Center h="100vh">
+        <Loader color="gold" size="lg" />
+      </Center>
+    );
   }
 
   return (
-    <div className="app-container">
-      <Navigation />
-      <main className="main-content">
+    <AppShell header={{ height: 60 }} padding="md">
+      <AppShell.Header>
+        <Navigation />
+      </AppShell.Header>
+
+      <AppShell.Main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
@@ -58,7 +66,7 @@ export function AppContent() {
             element={<Navigate to="/neural.html" replace />}
           />
         </Routes>
-      </main>
-    </div>
+      </AppShell.Main>
+    </AppShell>
   );
 }
