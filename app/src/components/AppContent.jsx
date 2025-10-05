@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
+import { trackPageView } from '../lib/analytics';
 import { Navigation } from './Navigation';
 import { HomePage } from './HomePage';
 import { AuthCallback } from './AuthCallback';
@@ -12,10 +13,16 @@ import { BoardMembers } from './BoardMembers';
 
 export function AppContent() {
   const { initialize, loading } = useAuthStore();
+  const location = useLocation();
 
   useEffect(() => {
     initialize();
   }, [initialize]);
+
+  // Track page views on route changes
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
 
   if (loading) {
     return <div className="loading">Loading...</div>;
