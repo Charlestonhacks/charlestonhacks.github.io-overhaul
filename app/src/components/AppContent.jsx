@@ -34,10 +34,12 @@ export function AppContent() {
     );
   }
 
+  const showSecondaryNav = location.pathname.startsWith('/about');
+
   return (
     <AppShell
       header={{ height: 60 }}
-      navbar={{ width: '100%', height: 48, breakpoint: 0 }}
+      navbar={showSecondaryNav ? { width: '100%', height: 48, breakpoint: 0 } : undefined}
       footer={{ height: 60 }}
       padding="md"
     >
@@ -45,9 +47,11 @@ export function AppContent() {
         <Navigation />
       </AppShell.Header>
 
-      <AppShell.Navbar>
-        <SecondaryNav />
-      </AppShell.Navbar>
+      {showSecondaryNav && (
+        <AppShell.Navbar>
+          <SecondaryNav />
+        </AppShell.Navbar>
+      )}
 
       <AppShell.Main>
         <Routes>
