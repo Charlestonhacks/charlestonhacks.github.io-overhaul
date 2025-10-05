@@ -156,6 +156,7 @@ Visit `http://localhost:3000/app/` to see the React app.
 
 ### Reference
 
+- **[Theme Guide](./THEME.md)** - Color palette, design system, and usage guidelines
 - **[Profile & Directory Requirements](./PROFILE-DIRECTORY-REQUIREMENTS.md)** - Feature specifications
 - **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
 - **[API Reference](./docs/API.md)** - Supabase queries and endpoints
