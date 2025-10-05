@@ -4,6 +4,7 @@ import { AppShell, Loader, Center } from '@mantine/core';
 import { useAuthStore } from '../store/authStore';
 import { trackPageView } from '../lib/analytics';
 import { Navigation } from './Navigation';
+import { Footer } from './Footer';
 import { HomePage } from './HomePage';
 import { AuthCallback } from './AuthCallback';
 import { ProfileForm } from './ProfileForm';
@@ -34,7 +35,7 @@ export function AppContent() {
   }
 
   return (
-    <AppShell header={{ height: 60 }} padding="md">
+    <AppShell header={{ height: 60 }} footer={{ height: 60 }} padding="md">
       <AppShell.Header>
         <Navigation />
       </AppShell.Header>
@@ -67,6 +68,10 @@ export function AppContent() {
           />
         </Routes>
       </AppShell.Main>
+
+      <AppShell.Footer>
+        <Footer />
+      </AppShell.Footer>
     </AppShell>
   );
 }
