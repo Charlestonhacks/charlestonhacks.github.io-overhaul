@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0a0a0a;
+  background: #0a0a0a url('/images/background.jpg') center center / cover no-repeat fixed;
   color: #eee;
 }
 
@@ -20,6 +20,13 @@
   font-weight: 700;
   color: #0bb;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  height: 40px;
+  width: auto;
 }
 
 .nav-links {

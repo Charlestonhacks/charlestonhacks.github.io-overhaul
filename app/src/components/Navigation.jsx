@@ -11,7 +11,9 @@ export function Navigation() {
   return (
     <nav className="main-nav">
       <div className="nav-brand">
-        <Link to="/">CharlestonHacks</Link>
+        <Link to="/">
+          <img src="/images/charlestonhackslogo.svg" alt="CharlestonHacks" className="nav-logo" />
+        </Link>
       </div>
 
       <div className="nav-links">
