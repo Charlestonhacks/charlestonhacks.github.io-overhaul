@@ -40,7 +40,7 @@ export function Navigation() {
               Home
             </Button>
 
-            <Menu trigger="hover" openDelay={100} closeDelay={200}>
+            <Menu position="bottom-start" withinPortal>
               <Menu.Target>
                 <Button
                   variant={isAboutActive ? 'light' : 'subtle'}
